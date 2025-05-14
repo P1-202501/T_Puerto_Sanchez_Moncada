@@ -29,8 +29,8 @@ df = df.drop_duplicates()
 #4. Eliminar filas con valores nulos en columnas críticas (Peso, Talla, Glucosa, Colesterol).
 columnas_criticas = ['Peso', 'Talla', 'Glucosa', 'Colesterol']
 df = df.dropna(subset=columnas_criticas)
-print("nueva con filas con valores nulos eliminados")
-print(df.head(10))
+# print("nueva con filas con valores nulos eliminados")
+# print(df.head(10))
 
 #5. Corregir la columna Fuma: Homologar los valores ingresados por True y False. Por ejemplo, reemplazando "desconocido" por "False" por defecto
 df['Fuma'] = df['Fuma'].str.strip().str.lower()
@@ -39,11 +39,15 @@ df['Fuma'] = df['Fuma'].replace({
     'no': False, 'no ': False, 'n': False, 'desconocido': False,
     '': False, 'false': False, 'true': True
 })
+# print("columna Fuma corregida")
+# print(df.head(10))
+
 #6. Extraer columna Mes en una nueva columna
 df['Fecha de tamizaje'] = pd.to_datetime(df['Fecha de tamizaje'], dayfirst=True, errors='coerce')
 df['Mes'] = df['Fecha de tamizaje'].dt.month
 
-
+print("columna Mes creada")
+print(df.head(10))
 
 
 
